@@ -4,10 +4,9 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     tscConfig = require('./tsconfig.json');
 
-var appSrc = 'src/app/components',
-    tsSrc = 'src/app/',
+var appSrc = 'src/app',
     assetsSrc = 'src/app/assets/',
-    componentsSrc = 'src/app/assets/';
+    componentsSrc = 'src/app/components/';
 
 gulp.task('html', function() {
     gulp.src(componentsSrc + '**/*.html');
@@ -27,26 +26,26 @@ gulp.task('copylibs', function() {
             'node_modules/rxjs/bundles/Rx.js',
             'node_modules/angular2/bundles/angular2.dev.js'
         ])
-        .pipe(gulp.dest(assetsSrc + 'js/lib/angular2'));
+        .pipe(gulp.dest(appSrc + 'js/lib/angular2'));
 });
 
 gulp.task('typescript', function() {
     return gulp
-        .src(tsSrc + '**/*.ts')
+        .src(appSrc + '**/*.ts')
         .pipe(sourcemaps.init())
         .pipe(typescript(tscConfig.compilerOptions))
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest(assetsSrc + 'js/'));
+        .pipe(gulp.dest(appSrc + 'js/'));
 });
 
 gulp.task('watch', function() {
-    gulp.watch(tsSrc + '**/*.ts', ['typescript']);
+    gulp.watch(appSrc + '**/*.ts', ['typescript']);
     gulp.watch(assetsSrc + 'css/*.css', ['css']);
     gulp.watch(componentsSrc + '**/*.html', ['html']);
 });
 
 gulp.task('webserver', function() {
-    gulp.src(tsSrc)
+    gulp.src(appSrc)
         .pipe(webserver({
             livereload: true,
             open: true

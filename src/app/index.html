@@ -5,12 +5,12 @@
     <link href='https://fonts.googleapis.com/css?family=Lato:700,400,100,200,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="assets/css/style.css">
 
-    <script src="assets/js/lib/angular2/es6-shim.min.js"></script>
-    <script src="assets/js/lib/angular2/system-polyfills.js"></script>
-    <script src="assets/js/lib/angular2/angular2-polyfills.js"></script>
-    <script src="assets/js/lib/angular2/system.src.js"></script>
-    <script src="assets/js/lib/angular2/Rx.js"></script>
-    <script src="assets/js/lib/angular2/angular2.dev.js"></script>
+    <script src="js/lib/angular2/es6-shim.min.js"></script>
+    <script src="js/lib/angular2/system-polyfills.js"></script>
+    <script src="js/lib/angular2/angular2-polyfills.js"></script>
+    <script src="js/lib/angular2/system.src.js"></script>
+    <script src="js/lib/angular2/Rx.js"></script>
+    <script src="js/lib/angular2/angular2.dev.js"></script>
     <script>
         System.config({
             packages: {
@@ -20,13 +20,12 @@
                 }
             }
         });
-        System.import('assets/js/components/boot')
+        System.import('js/boot')
             .then(null, console.error.bind(console));
     </script>
 </head>
 
 <body>
-    <my-app>Loading...</my-app>
+  <my-app>Loading...</my-app>
 </body>
-
 </html>
