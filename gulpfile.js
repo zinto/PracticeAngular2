@@ -6,10 +6,11 @@ var gulp = require('gulp'),
 
 var appSrc = 'src/app/components',
     tsSrc = 'src/app/',
-    assetsSrc = 'src/app/assets/';
+    assetsSrc = 'src/app/assets/',
+    componentsSrc = 'src/app/assets/';
 
 gulp.task('html', function() {
-    gulp.src(appSrc + '**/*.html');
+    gulp.src(componentsSrc + '**/*.html');
 });
 
 gulp.task('css', function() {
@@ -41,11 +42,11 @@ gulp.task('typescript', function() {
 gulp.task('watch', function() {
     gulp.watch(tsSrc + '**/*.ts', ['typescript']);
     gulp.watch(assetsSrc + 'css/*.css', ['css']);
-    gulp.watch(appSrc + '**/*.html', ['html']);
+    gulp.watch(componentsSrc + '**/*.html', ['html']);
 });
 
 gulp.task('webserver', function() {
-    gulp.src(appSrc)
+    gulp.src(tsSrc)
         .pipe(webserver({
             livereload: true,
             open: true
